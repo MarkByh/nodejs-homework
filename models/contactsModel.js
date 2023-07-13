@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const ErrorHandle = require('../middlewares/ErrorHandle')
-const userScema = mongoose.Schema(
+
+const contactScema = mongoose.Schema(
     {
         name: {
             type: String,
@@ -16,10 +17,15 @@ const userScema = mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "users",
+            required: true,
+        },
     },
     { timestamps: true }
 );
-userScema.post("save", ErrorHandle);
-const Contacts = mongoose.model('Contacts', userScema)
+contactScema.post("save", ErrorHandle);
+const Contacts = mongoose.model('contacts', contactScema)
 
 module.exports = Contacts;
