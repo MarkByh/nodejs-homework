@@ -22,6 +22,10 @@ const userScema = mongoose.Schema({
         type: String,
         default: ""
     },
+    avatarURL: {
+        type: String,
+        required: true,
+    },
 }, { versionKey: false, timestamps: true })
 
 userScema.post("save", ErrorHandle);
