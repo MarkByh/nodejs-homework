@@ -26,6 +26,14 @@ const userScema = mongoose.Schema({
         type: String,
         required: true,
     },
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationCode: {
+        type: String,
+        required: [true, "Verify token is required"],
+    },
 }, { versionKey: false, timestamps: true })
 
 userScema.post("save", ErrorHandle);
